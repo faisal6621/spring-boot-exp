@@ -1,4 +1,4 @@
-package com.faisal.spring.boot.springbootexp.web.configuration;
+package com.faisal.spring.boot.springbootexp.configuration;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

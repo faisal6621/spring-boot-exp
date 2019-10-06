@@ -6,7 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class HelloWorldController {
+@RequestMapping("/web")
+public class HelloWorldWebController {
 
 	@RequestMapping("/hellojsp")
 	public String helloWorld(Map<String, Object> model) {
