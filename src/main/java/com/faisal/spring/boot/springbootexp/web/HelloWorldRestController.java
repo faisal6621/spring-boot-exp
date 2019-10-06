@@ -1,16 +1,18 @@
 package com.faisal.spring.boot.springbootexp.web;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.faisal.spring.boot.springbootexp.web.configuration.HelloWorldConfiguration;
+
 @RestController
-@EnableAutoConfiguration
-@ConfigurationProperties(prefix = "helloworld")
+@EnableConfigurationProperties(HelloWorldConfiguration.class)
 public class HelloWorldRestController {
-	private String greeting;
+
+	@Autowired
+	private HelloWorldConfiguration configuration;
 
 	@RequestMapping("/")
 	private String helloWorld() {
@@ -20,16 +22,7 @@ public class HelloWorldRestController {
 
 	@RequestMapping("/hello")
 	private String hello() {
-		return this.greeting;
-	}
-
-	// setting this public so that spring can set configuration property here
-	public void setGreeting(String greeting) {
-		this.greeting = greeting;
-	}
-
-	public static void main(String[] args) {
-		SpringApplication.run(HelloWorldRestController.class, args);
+		return configuration.getGreeting();
 	}
 
 }

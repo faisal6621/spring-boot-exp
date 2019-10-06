@@ -1,5 +1,0 @@
-{"properties": [{
-  "name": "helloworld.greeting",
-  "type": "java.lang.String",
-  "description": "test configurable greeting"
-}]}
