@@ -5,17 +5,27 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties("helloworld")
 public class HelloWorldConfiguration {
 
-	/**
-	 * configurable greeting
-	 */
-	private String greeting = "Not configured :(";
+    /**
+     * configurable greeting
+     */
+    private String greeting = "Bonjour!";
 
-	public String getGreeting() {
-		return greeting;
-	}
+    private String message = "Welcome!";
 
-	public void setGreeting(String greeting) {
-		this.greeting = greeting;
-	}
+    public String getGreeting() {
+        return greeting;
+    }
+
+    public void setGreeting(String greeting) {
+        this.greeting = greeting;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
 
 }

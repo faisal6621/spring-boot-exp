@@ -24,7 +24,7 @@ public class HelloWorldRestController {
 
     @RequestMapping("/hello")
     private String hello() {
-        return configuration.getGreeting();
+        return configuration.getGreeting() + configuration.getMessage();
     }
 
 }
