@@ -1,10 +1,9 @@
 package com.faisal.spring.boot.springbootexp.rest;
 
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -21,10 +20,9 @@ class HelloWorldRestControllerTest {
         System.out.println("tearing down");
     }
 
-    @Disabled
     @Test
     void test() {
-        fail("Not yet implemented");
+        assertEquals(4, 2 + 2);
     }
 
 }

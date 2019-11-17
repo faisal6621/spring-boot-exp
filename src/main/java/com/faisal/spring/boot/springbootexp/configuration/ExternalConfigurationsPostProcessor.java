@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.env.EnvironmentPostProcessor;
 import org.springframework.boot.env.PropertiesPropertySourceLoader;
@@ -14,6 +16,9 @@ import org.springframework.core.env.PropertySource;
 import org.springframework.core.io.FileSystemResource;
 
 public class ExternalConfigurationsPostProcessor implements EnvironmentPostProcessor {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(ExternalConfigurationsPostProcessor.class);
+
     private final PropertiesPropertySourceLoader loader = new PropertiesPropertySourceLoader();
 
     @Override
@@ -26,7 +31,7 @@ public class ExternalConfigurationsPostProcessor implements EnvironmentPostProce
                 listPropertySources.forEach(propertySource -> propertySources
                         .addAfter(CommandLinePropertySource.COMMAND_LINE_PROPERTY_SOURCE_NAME, propertySource));
             } else {
-                listPropertySources.forEach(propertySouce -> propertySources.addFirst(propertySouce));
+                listPropertySources.forEach(propertySources::addFirst);
             }
         }
     }
@@ -36,7 +41,7 @@ public class ExternalConfigurationsPostProcessor implements EnvironmentPostProce
         try {
             return loader.load("external-config", fileSystemResource);
         } catch (IOException ex) {
-            ex.printStackTrace();
+            LOGGER.error("unable to load external config", ex);
         }
         return Collections.emptyList();
     }

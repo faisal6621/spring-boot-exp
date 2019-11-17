@@ -17,13 +17,13 @@ public class HelloWorldRestController {
     private HelloWorldConfiguration configuration;
 
     @GetMapping
-    private String helloWorld() {
+    public String helloWorld() {
         return "Hello World!";
 
     }
 
-    @RequestMapping("/hello")
-    private String hello() {
+    @GetMapping("/hello")
+    public String hello() {
         return configuration.getGreeting() + configuration.getMessage();
     }
 
